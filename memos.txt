@@ -28,6 +28,7 @@ g p origin master
 git config --global alias.a add
 git config --global alias.c commit
 
+#REF http://d.hatena.ne.jp/u1_fukui/20100429/1272522789
 git config --global core.editor 'gedit -c "set fenc=utf-8"'
 git config --global core.editor 'gedit'
 

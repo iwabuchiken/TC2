@@ -30,7 +30,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class E_5_multiple_sources extends JFrame implements ActionListener {
+public class TC2 extends JFrame implements ActionListener {
 
 	private JList<String> list;
     private DefaultListModel<String> model;
@@ -43,7 +43,7 @@ public class E_5_multiple_sources extends JFrame implements ActionListener {
 
     private static HashMap<String, String> map;
     
-	public E_5_multiple_sources() {
+	public TC2() {
 		
 		initUI();
 		
@@ -154,6 +154,8 @@ public class E_5_multiple_sources extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		JMenuBar menubar = new JMenuBar();
         ImageIcon icon = new ImageIcon(getClass().getResource("icon_menu_file_50x37.png"));
+//		ImageIcon icon = new ImageIcon(getClass().getResource("image/icon_menu_file_50x37.png"));
+//		ImageIcon icon = new ImageIcon(getClass().getResource("../image/icon_menu_file_50x37.png"));
         
         // Menu
         JMenu file = new JMenu("File(F)");
@@ -235,7 +237,7 @@ public class E_5_multiple_sources extends JFrame implements ActionListener {
 			@Override
 			public void run() {
 				
-				E_5_multiple_sources ex = new E_5_multiple_sources();
+				TC2 ex = new TC2();
 				
 				ex.setVisible(true);
 				
