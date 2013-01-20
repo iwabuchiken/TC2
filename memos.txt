@@ -28,6 +28,9 @@ g p origin master
 git config --global alias.a add
 git config --global alias.c commit
 
+git config --global core.editor 'gedit -c "set fenc=utf-8"'
+git config --global core.editor 'gedit'
+
 git log --grep=B4 -3
 git log --grep=B5 -3
 
