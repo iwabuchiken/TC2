@@ -6,25 +6,32 @@
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir"     value="${build.dir}/jar"/>
 	
-	<property name="image.dir"     value="${src.dir}/image"/>
-
     <property name="main-class"  value="tc2.main.TC2"/>
 	
+	<property name="project-root"  value="tc2"/>
+	
+	<property name="image.dir.src" value="${src.dir}/image"/>
+	<!--<property name="image.dir.dst" value="${classes.dir}/${project-root}/image"/>-->
+	<property name="image.dir.dst"
+			value="${classes.dir}/tc2/main"/>
+
+<!-- Targets -->
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
 
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
+    	<!--<mkdir dir="${image.dir.dst}"/>-->
 
-    	<copy todir="${classes.dir}">
-    		<fileset dir="${image.dir}">
-    		</fileset>
-    	</copy>
-        
     	<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
    
 <!--    	<copy file="${image.dir}/*.png" todir="${classes.dir}"></copy>	-->
+    	<copy todir="${image.dir.dst}">
+    		<fileset dir="${image.dir.src}">
+    		</fileset>
+    	</copy>
+        
     	
     </target>
 
