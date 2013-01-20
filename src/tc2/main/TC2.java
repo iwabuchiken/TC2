@@ -153,10 +153,11 @@ public class TC2 extends JFrame implements ActionListener {
 	private JMenuBar initUI_2_menues(JFrame frame) {
 		// TODO Auto-generated method stub
 		JMenuBar menubar = new JMenuBar();
-        ImageIcon icon = new ImageIcon(getClass().getResource("icon_menu_file_50x37.png"));
+//        ImageIcon icon = new ImageIcon(getClass().getResource("icon_menu_file_50x37.png"));
 //		ImageIcon icon = new ImageIcon(getClass().getResource("image/icon_menu_file_50x37.png"));
 //		ImageIcon icon = new ImageIcon(getClass().getResource("../image/icon_menu_file_50x37.png"));
-        
+		ImageIcon icon = new ImageIcon(getClass().getResource("../../icon_menu_file_50x37.png"));
+		
         // Menu
         JMenu file = new JMenu("File(F)");
         file.setMnemonic(KeyEvent.VK_F);

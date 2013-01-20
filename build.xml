@@ -1,25 +1,55 @@
-<project>
+<project name="TC2" basedir="." default="main">
 
+	<property name="src.dir"     value="src"/>
+
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir"     value="${build.dir}/jar"/>
+	
+	<property name="image.dir"     value="${src.dir}/image"/>
+
+    <property name="main-class"  value="tc2.main.TC2"/>
+	
     <target name="clean">
-        <delete dir="build"/>
+        <delete dir="${build.dir}"/>
     </target>
 
     <target name="compile">
-        <mkdir dir="build/classes"/>
-        <javac srcdir="src" destdir="build/classes"/>
+        <mkdir dir="${classes.dir}"/>
+
+    	<copy todir="${classes.dir}">
+    		<fileset dir="${image.dir}">
+    		</fileset>
+    	</copy>
+        
+    	<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+   
+<!--    	<copy file="${image.dir}/*.png" todir="${classes.dir}"></copy>	-->
+    	
     </target>
 
-    <target name="jar">
-        <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar
+        	destfile="${jar.dir}/${ant.project.name}.jar"
+        	basedir="${classes.dir}">
+        	
             <manifest>
-                <attribute name="Main-Class" value="oata.HelloWorld"/>
+                <attribute name="Main-Class" value="${main-class}"/>
             </manifest>
+        	
+<!--        	<fileset dir=".">
+        		<include name="${image.dir}/*.png"/>
+        	</fileset>
+-->       
+        	
         </jar>
     </target>
 
-    <target name="run">
-        <java jar="build/jar/HelloWorld.jar" fork="true"/>
+    <target name="run" depends="jar">
+    	<java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
     </target>
 
+	<target name="main" depends="clean,run"/>
+	
 </project>
