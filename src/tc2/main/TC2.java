@@ -45,70 +45,125 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import tc2.utils.Methods;
+import tc2.utils.MyCellRenderer;
 
 public class TC2 extends JFrame{
 
-	  public static void main(String[] args){
-	    TC2 test = new TC2("JListSample");
+	private DefaultListModel<String> model;
 
-	    /* 終了処理を変更 */
-	    test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public static void main(String[] args){
+		
+		SwingUtilities.invokeLater(new Runnable(){
 
-	    test.setBounds( 10, 10, 250, 130);
-	    test.setVisible(true);
-	  }
+			@Override
+			public void run() {
+				
+				TC2 ex = new TC2("TC2");
 
-	  TC2(String title){
-	    setTitle(title);
+				ex.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				
+				ex.setBounds( 100, 10, 300, 130);
+//					test.setVisible(true);
 
-	    /* JListの初期データ */
-	    String[] initData = {"Blue", "Green", "Red", "Whit", "Black"};
-	    JList list = new JList(initData);
-
-	    /* CellRendererを設定する */
-	    MyCellRenderer renderer = new MyCellRenderer();
-	    list.setCellRenderer(renderer);
-
-	    
-	    
-	    JScrollPane sp = new JScrollPane();
-	    sp.getViewport().setView(list);
-	    sp.setPreferredSize(new Dimension(200, 80));
-
-	    JPanel p = new JPanel();
-	    p.add(sp);
-
-	    getContentPane().add(p, BorderLayout.CENTER);
-	  }
-
-	  class MyCellRenderer implements ListCellRenderer {
-	    JLabel label;
-
-	    public MyCellRenderer() {
-	      label = new JLabel();
-	      label.setOpaque(true);
-	    }
-
-	    public Component getListCellRendererComponent(
-	      JList list,
-	      Object value,
-	      int index,
-	      boolean isSelected,
-	      boolean cellHasFocus){
-
-	      if (isSelected){
-	        label.setText("●  " + value.toString() + "  ●");
-
-	        label.setBackground(Color.red);
-	        label.setForeground(Color.white);
-	      }else{
-	        label.setText(value.toString());
-
-	        label.setBackground(Color.white);
-	        label.setForeground(Color.black);
-	      }
-
-	      return label;
-	    }
-	  }
+				ex.setVisible(true);
+				
+			}//public void run()
+		});//SwingUtilities.invokeLater
+		
+//		TC2 test = new TC2("TC2");
+//	
+//		/* 終了処理を変更 */
+//		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	
+//		test.setBounds( 100, 10, 300, 130);
+//		test.setVisible(true);
 	}
+
+	TC2(String title){
+		
+		initGUI(title);
+		
+	}//TC2(String title)
+
+	private void initGUI(String title) {
+		/*********************************
+		 * 01
+		 *********************************/
+		// Frame
+//		initGUI_1_frame(this, title);
+		
+		/* JListの初期データ */
+		model = new DefaultListModel();
+		
+		for(int i = 0; i < 20; i++) {
+			
+			model.addElement("Item number: " + i);
+			
+		}
+		
+		JList<String> list = new JList<String>(model);
+		
+		list.setFont(new Font("Areal", Font.BOLD,14));
+
+		/* CellRendererを設定する */
+		MyCellRenderer renderer = new MyCellRenderer();
+		list.setCellRenderer(renderer);
+
+		
+		
+		JScrollPane sp = new JScrollPane();
+		sp.getViewport().setView(list);
+		sp.setPreferredSize(new Dimension(200, 200));
+
+		JPanel p = new JPanel();
+		p.add(sp);
+
+		getContentPane().add(p, BorderLayout.CENTER);
+		
+	}//private void initGUI(String title)
+
+	private void initGUI_1_frame(JFrame frame, String title) {
+		// TODO 自動生成されたメソッド・スタブ
+		frame.setTitle(title);
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+		frame.setBounds( 100, 10, 300, 130);
+		
+//		setVisible(true);
+		
+	}//private void initGUI_1_frame(String title)
+
+//	class MyCellRenderer implements ListCellRenderer {
+//		JLabel label;
+//
+//		public MyCellRenderer() {
+//			label = new JLabel();
+//			label.setOpaque(true);
+//		}
+//
+//		public Component getListCellRendererComponent(
+//			JList list,
+//			Object value,
+//			int index,
+//			boolean isSelected,
+//			boolean cellHasFocus){
+//
+//			if (isSelected){
+//					label.setText("●	" + value.toString() + "●");
+//
+//				label.setBackground(Color.red);
+//				label.setForeground(Color.white);
+//			}else{
+//				label.setText(value.toString());
+//
+//				label.setBackground(Color.white);
+//				label.setForeground(Color.black);
+//			}
+//
+//			label.setFont(new Font("Areal", Font.BOLD,20));
+//			
+//			return label;
+//		}
+//	}
+}

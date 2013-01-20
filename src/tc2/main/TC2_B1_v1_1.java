@@ -46,70 +46,70 @@ import javax.swing.event.ListSelectionListener;
 
 import tc2.utils.Methods;
 
-public class TC2_B1_v1_1 extends JFrame{
-
-	  public static void main(String[] args){
-	    TC2_B1_v1_1 test = new TC2_B1_v1_1("JListSample");
-
-	    /* 終了処理を変更 */
-	    test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-	    test.setBounds( 10, 10, 250, 130);
-	    test.setVisible(true);
-	  }
-
-	  TC2_B1_v1_1(String title){
-	    setTitle(title);
-
-	    /* JListの初期データ */
-	    String[] initData = {"Blue", "Green", "Red", "Whit", "Black"};
-	    JList list = new JList(initData);
-
-	    /* CellRendererを設定する */
-	    MyCellRenderer renderer = new MyCellRenderer();
-	    list.setCellRenderer(renderer);
-
-	    JScrollPane sp = new JScrollPane();
-	    sp.getViewport().setView(list);
-	    sp.setPreferredSize(new Dimension(200, 80));
-
-	    JPanel p = new JPanel();
-	    p.add(sp);
-
-	    getContentPane().add(p, BorderLayout.CENTER);
-	  }
-
-	  class MyCellRenderer implements ListCellRenderer {
-	    JLabel label;
-
-	    public MyCellRenderer() {
-	      label = new JLabel();
-	      label.setOpaque(true);
-	    }
-
-	    public Component getListCellRendererComponent(
-	      JList list,
-	      Object value,
-	      int index,
-	      boolean isSelected,
-	      boolean cellHasFocus){
-
-	      if (isSelected){
-	        label.setText("●  " + value.toString() + "  ●");
-
-	        label.setBackground(Color.red);
-	        label.setForeground(Color.white);
-	      }else{
-	        label.setText(value.toString());
-
-	        label.setBackground(Color.white);
-	        label.setForeground(Color.black);
-	      }
-
-	      return label;
-	    }
-	  }
-	}
+//public class TC2_B1_v1_1 extends JFrame{
+//
+//	  public static void main(String[] args){
+//	    TC2_B1_v1_1 test = new TC2_B1_v1_1("JListSample");
+//
+//	    /* 終了処理を変更 */
+//	    test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//	    test.setBounds( 10, 10, 250, 130);
+//	    test.setVisible(true);
+//	  }
+//
+//	  TC2_B1_v1_1(String title){
+//	    setTitle(title);
+//
+//	    /* JListの初期データ */
+//	    String[] initData = {"Blue", "Green", "Red", "Whit", "Black"};
+//	    JList list = new JList(initData);
+//
+//	    /* CellRendererを設定する */
+//	    MyCellRenderer renderer = new MyCellRenderer();
+//	    list.setCellRenderer(renderer);
+//
+//	    JScrollPane sp = new JScrollPane();
+//	    sp.getViewport().setView(list);
+//	    sp.setPreferredSize(new Dimension(200, 80));
+//
+//	    JPanel p = new JPanel();
+//	    p.add(sp);
+//
+//	    getContentPane().add(p, BorderLayout.CENTER);
+//	  }
+//
+//	  class MyCellRenderer implements ListCellRenderer {
+//	    JLabel label;
+//
+//	    public MyCellRenderer() {
+//	      label = new JLabel();
+//	      label.setOpaque(true);
+//	    }
+//
+//	    public Component getListCellRendererComponent(
+//	      JList list,
+//	      Object value,
+//	      int index,
+//	      boolean isSelected,
+//	      boolean cellHasFocus){
+//
+//	      if (isSelected){
+//	        label.setText("●  " + value.toString() + "  ●");
+//
+//	        label.setBackground(Color.red);
+//	        label.setForeground(Color.white);
+//	      }else{
+//	        label.setText(value.toString());
+//
+//	        label.setBackground(Color.white);
+//	        label.setForeground(Color.black);
+//	      }
+//
+//	      return label;
+//	    }
+//	  }
+//	}
 
 //import tc2.utils.Methods;
 
@@ -351,358 +351,358 @@ public class TC2_B1_v1_1 extends JFrame{
 //	}
 
 
-//public class TC2 extends JFrame implements ActionListener {
-//
-//	private JList<String> list;
-//    private DefaultListModel<String> model;
-//	private JList<String> list_diff;
-//    private DefaultListModel<String> model_diff;
-//
-//    private JButton btn_time;
-//    private JButton btn_clear;
-//    private JButton btn_calculate;
-//
-//    private static HashMap<String, String> map;
-//    
-//	public TC2() {
-//		
-//		initUI();
-//		
-//		
-//	}
-//	
-//	private void initUI() {
-//		
-//		JPanel panel = new JPanel();
-//		getContentPane().add(panel);
-//		
-//		// Buttons
-//		panel = initUI_1_buttons(panel);
-//		
-//		// Menues
-//		JMenuBar menubar = initUI_2_menues(this);
-//		
-//		setJMenuBar(menubar);
-//		
-//		// List
-//		initUI_3_list(panel);
-//		
-////		panel.add(list);
-//		
-//		//
-//		panel.setLayout(null);
-//
-//		initUI_frame(this);
-//		
-//	}//private void initUI()
-//
-//	@SuppressWarnings({ "rawtypes", "unchecked" })
-//	private void initUI_3_list(JPanel panel) {
-//		// TODO Auto-generated method stub
-//		// List for time labels
-//		model = new DefaultListModel();
-//        list = new JList(model);
-//        list.setBounds(200, 30, 220, 150);
+public class TC2_B1_v1_1 extends JFrame implements ActionListener {
+
+	private JList<String> list;
+    private DefaultListModel<String> model;
+	private JList<String> list_diff;
+    private DefaultListModel<String> model_diff;
+
+    private JButton btn_time;
+    private JButton btn_clear;
+    private JButton btn_calculate;
+
+    private static HashMap<String, String> map;
+    
+	public TC2_B1_v1_1() {
+		
+		initUI();
+		
+		
+	}
+	
+	private void initUI() {
+		
+		JPanel panel = new JPanel();
+		getContentPane().add(panel);
+		
+		// Buttons
+		panel = initUI_1_buttons(panel);
+		
+		// Menues
+		JMenuBar menubar = initUI_2_menues(this);
+		
+		setJMenuBar(menubar);
+		
+		// List
+		initUI_3_list(panel);
+		
+//		panel.add(list);
+		
+		//
+		panel.setLayout(null);
+
+		initUI_frame(this);
+		
+	}//private void initUI()
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private void initUI_3_list(JPanel panel) {
+		// TODO Auto-generated method stub
+		// List for time labels
+		model = new DefaultListModel();
+        list = new JList(model);
+        list.setBounds(200, 30, 220, 150);
+        
+        // List for diff labels
+		model_diff = new DefaultListModel();
+        list_diff = new JList(model_diff);
+        list_diff.setBounds(200, 200, 220, 100);
+        
+        list.setFont(new Font("Century", Font.BOLD, 18));
+        list_diff.setFont(new Font("Century", Font.BOLD, 18));
+        
+        // Listener
+        list_diff.addListSelectionListener(new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				String item = (String) list_diff.getSelectedValue();
+				
+				Toolkit kit = Toolkit.getDefaultToolkit();
+				Clipboard clip = kit.getSystemClipboard();
+				
+				StringSelection ss = new StringSelection(item);
+				
+				clip.setContents(ss, ss);
+				
+//				model_diff.addElement(item);
+				
+			}});
+
+        list.addListSelectionListener(new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				String item = (String) list.getSelectedValue();
+				
+				Toolkit kit = Toolkit.getDefaultToolkit();
+				Clipboard clip = kit.getSystemClipboard();
+				
+				StringSelection ss = new StringSelection(item);
+				
+				clip.setContents(ss, ss);
+				
+//				model_diff.addElement(item);
+				
+			}});
+
+//        // Scroll pane
+////        JScrollPane sp = new JScrollPane();
+////        JScrollPane sp_diff = new JScrollPane();
+//        JScrollPane sp = new JScrollPane(list);
+//        JScrollPane sp_diff = new JScrollPane(list_diff);
 //        
-//        // List for diff labels
-//		model_diff = new DefaultListModel();
-//        list_diff = new JList(model_diff);
-//        list_diff.setBounds(200, 200, 220, 100);
-//        
-//        list.setFont(new Font("Century", Font.BOLD, 18));
-//        list_diff.setFont(new Font("Century", Font.BOLD, 18));
-//        
-//        // Listener
-//        list_diff.addListSelectionListener(new ListSelectionListener(){
-//
-//			@Override
-//			public void valueChanged(ListSelectionEvent arg0) {
-//				// TODO Auto-generated method stub
-//				String item = (String) list_diff.getSelectedValue();
-//				
-//				Toolkit kit = Toolkit.getDefaultToolkit();
-//				Clipboard clip = kit.getSystemClipboard();
-//				
-//				StringSelection ss = new StringSelection(item);
-//				
-//				clip.setContents(ss, ss);
-//				
-////				model_diff.addElement(item);
-//				
-//			}});
-//
-//        list.addListSelectionListener(new ListSelectionListener(){
-//
-//			@Override
-//			public void valueChanged(ListSelectionEvent arg0) {
-//				// TODO Auto-generated method stub
-//				String item = (String) list.getSelectedValue();
-//				
-//				Toolkit kit = Toolkit.getDefaultToolkit();
-//				Clipboard clip = kit.getSystemClipboard();
-//				
-//				StringSelection ss = new StringSelection(item);
-//				
-//				clip.setContents(ss, ss);
-//				
-////				model_diff.addElement(item);
-//				
-//			}});
-//
-////        // Scroll pane
-//////        JScrollPane sp = new JScrollPane();
-//////        JScrollPane sp_diff = new JScrollPane();
-////        JScrollPane sp = new JScrollPane(list);
-////        JScrollPane sp_diff = new JScrollPane(list_diff);
+//        sp.setBackground(Color.blue);
+//        sp.setVisible(true);
+////        sp.getViewport().setView(list);
+////        sp.setPreferredSize(new Dimension(220, 150));
 ////        
-////        sp.setBackground(Color.blue);
-////        sp.setVisible(true);
-//////        sp.getViewport().setView(list);
-//////        sp.setPreferredSize(new Dimension(220, 150));
-//////        
-//////        sp_diff.getViewport().setView(list_diff);
-//////        sp_diff.setPreferredSize(new Dimension(220, 100));
-//////
-////        panel.add(sp);
-////        panel.add(sp_diff);
-//
-//        // Add to panel
-//        panel.add(list);
-//        panel.add(list_diff);
-//	}
-//
-//	private JMenuBar initUI_2_menues(JFrame frame) {
-//		// TODO Auto-generated method stub
-//		JMenuBar menubar = new JMenuBar();
-//        ImageIcon icon = new ImageIcon(getClass().getResource("icon_menu_file_50x37.png"));
-////		ImageIcon icon = new ImageIcon(getClass().getResource("image/icon_menu_file_50x37.png"));
-////		ImageIcon icon = new ImageIcon(getClass().getResource("../image/icon_menu_file_50x37.png"));
-////		ImageIcon icon = new ImageIcon(getClass().getResource("../../icon_menu_file_50x37.png"));
+////        sp_diff.getViewport().setView(list_diff);
+////        sp_diff.setPreferredSize(new Dimension(220, 100));
+////
+//        panel.add(sp);
+//        panel.add(sp_diff);
+
+        // Add to panel
+        panel.add(list);
+        panel.add(list_diff);
+	}
+
+	private JMenuBar initUI_2_menues(JFrame frame) {
+		// TODO Auto-generated method stub
+		JMenuBar menubar = new JMenuBar();
+        ImageIcon icon = new ImageIcon(getClass().getResource("icon_menu_file_50x37.png"));
+//		ImageIcon icon = new ImageIcon(getClass().getResource("image/icon_menu_file_50x37.png"));
+//		ImageIcon icon = new ImageIcon(getClass().getResource("../image/icon_menu_file_50x37.png"));
+//		ImageIcon icon = new ImageIcon(getClass().getResource("../../icon_menu_file_50x37.png"));
+		
+        // Menu
+        JMenu file = new JMenu("File(F)");
+        file.setMnemonic(KeyEvent.VK_F);
+        
+        // Menu item
+        JMenuItem eMenuItem = new JMenuItem("Exit(C)", icon);
+        eMenuItem.setMnemonic(KeyEvent.VK_C);
+        eMenuItem.setToolTipText("Exit application");
+        eMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                System.exit(0);
+            }
+
+        });
+        
+        // Add item to menu
+        file.add(eMenuItem);
+        
+        menubar.add(file);
+        
+        return menubar;
+	}
+
+	private void initUI_frame(JFrame frame) {
+		// TODO Auto-generated method stub
+		setTitle("E2");
+		
+		frame.setSize(600, 400);
+		
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+	}
+
+	private JPanel initUI_1_buttons(JPanel panel) {
+		
+		// Get time
+		btn_time = new JButton(map.get("gt"));
+		
+		btn_time.setBounds(50, 60, 130, 50);
+		
+		btn_time.addActionListener(this);
+		
+		// Calculate the duration
+		btn_calculate = new JButton(map.get("cal"));
+		
+		btn_calculate.setBounds(50, 120, 130, 50);
+		
+		btn_calculate.addActionListener(this);
+		
+		// Clear the labels
+		
+		btn_clear = new JButton(map.get("cl"));
+		
+		btn_clear.setBounds(50, 180, 130, 50);
+		
+		btn_clear.addActionListener(this);
+		
+		// Add to panel
+		panel.add(btn_time);
+		panel.add(btn_calculate);
+		panel.add(btn_clear);
+		
+//		// Clear
+//		btn_clear = new JButton("Clear");
+//		btn_clear.setBounds(50, 120, 130, 50);
 //		
-//        // Menu
-//        JMenu file = new JMenu("File(F)");
-//        file.setMnemonic(KeyEvent.VK_F);
-//        
-//        // Menu item
-//        JMenuItem eMenuItem = new JMenuItem("Exit(C)", icon);
-//        eMenuItem.setMnemonic(KeyEvent.VK_C);
-//        eMenuItem.setToolTipText("Exit application");
-//        eMenuItem.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent event) {
-//                System.exit(0);
-//            }
-//
-//        });
-//        
-//        // Add item to menu
-//        file.add(eMenuItem);
-//        
-//        menubar.add(file);
-//        
-//        return menubar;
-//	}
-//
-//	private void initUI_frame(JFrame frame) {
-//		// TODO Auto-generated method stub
-//		setTitle("E2");
-//		
-//		frame.setSize(600, 400);
-//		
-//		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-//		
-//	}
-//
-//	private JPanel initUI_1_buttons(JPanel panel) {
-//		
-//		// Get time
-//		btn_time = new JButton(map.get("gt"));
-//		
-//		btn_time.setBounds(50, 60, 130, 50);
-//		
-//		btn_time.addActionListener(this);
-//		
-//		// Calculate the duration
-//		btn_calculate = new JButton(map.get("cal"));
-//		
-//		btn_calculate.setBounds(50, 120, 130, 50);
-//		
-//		btn_calculate.addActionListener(this);
-//		
-//		// Clear the labels
-//		
-//		btn_clear = new JButton(map.get("cl"));
-//		
-//		btn_clear.setBounds(50, 180, 130, 50);
-//		
-//		btn_clear.addActionListener(this);
-//		
-//		// Add to panel
-//		panel.add(btn_time);
-//		panel.add(btn_calculate);
-//		panel.add(btn_clear);
-//		
-////		// Clear
-////		btn_clear = new JButton("Clear");
-////		btn_clear.setBounds(50, 120, 130, 50);
-////		
-////		this.add(btn_clear);
-//		
-//		return panel;
-//	}
-//
-//	public static void main(String[] args) {
-//
-//		init_map();
-//		
-//		SwingUtilities.invokeLater(new Runnable(){
-//
-//			@Override
-//			public void run() {
-//				
-//				TC2 ex = new TC2();
-//				
-//				ex.setVisible(true);
-//				
-//			}//public void run()
-//		});//SwingUtilities.invokeLater
-//	}
-//
-//
-//	private static void init_map() {
-//		
-//		map = new HashMap<String, String>();
-//		
-//		map.put("gt", "Get time");
-//		map.put("cal", "Calculate");
-//		map.put("cl", "Clear");
-//		
-//	}//private static void init_map()
-//	
-//
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//		
-//		JButton o = (JButton) e.getSource();
-//		
-//		String label = o.getText();
-//		
-//		if (label.equals(map.get("gt"))) {
-//			
-//			actionPerformed_get_time(e);
-//			
-//		} else if (label.equals(map.get("cal"))) {//if (label.equals(map.get("gt")))
-//
-//			actionPerformed_cal();
-//			
-//		} else if (label.equals(map.get("cl"))) {//if (label.equals(map.get("gt")))
-//			
-//			actionPerformed_clear(e);
-//			
-//		}//if (label.equals(map.get("gt")))
-//		
-//	}//public void actionPerformed(ActionEvent arg0)
-//
-//	private void actionPerformed_cal() {
-//		
-//		long duration = 0;
-//		
-////		if (model.getSize() < 4) {
-//		if (model.getSize() < 2) {
-//			
-//			return;
-//			
-//		}//if (model.getSize() == condition)
-//		
-//		//
-////		String[] start_time = model.get(1).split(" ")[1].split(":");
-////		String[] start_time = model.get(1).split(" ")[2].split(":");
-//		String[] start_time = model.get(model.size() - 2).split(" ")[0].split(":");
-//		
-//		String[] end_time = model.get(model.size() - 1).split(" ")[0].split(":");
-//		
-////		model.addElement(model.get(1).split(" ")[2]);
-////		model.addElement(start_time[0]);
-////		model.addElement(model.get(0));
-//		
-//		
-//		Calendar c_start = Calendar.getInstance();
-//		c_start.set(2013, 1, 10,
-//				Integer.parseInt(start_time[0]),
-//				Integer.parseInt(start_time[1]),
-//				Integer.parseInt(start_time[2])
-//		);
-//		
-//		long s_time = c_start.getTimeInMillis();
-//
-//		// End time
-//		Calendar c_end = Calendar.getInstance();
-//		c_end.set(2013, 1, 10,
-//				Integer.parseInt(end_time[0]),
-//				Integer.parseInt(end_time[1]),
-//				Integer.parseInt(end_time[2])
-//		);
-//		
-//		long e_time = c_end.getTimeInMillis();
-//
-//		long diff = e_time - s_time;
-//		
-//		String digit_time = Methods.convert_millsec_to_digit_label(diff);
-//		
-////		model.addElement(String.valueOf(s_time));
-////		model.addElement(String.valueOf(e_time));
-//		if (model_diff.getSize() >= 4) {
-//			
-//			model_diff.remove(0);
-//			
-//			model_diff.addElement(String.valueOf(digit_time));
-//			
-//		} else {//if (model_digit_time.getSize() > 4)
-//			
-//			model_diff.addElement(String.valueOf(digit_time));
-//			
-//		}//if (model_diff.getSize() > 4)
-//		
-////		model_diff.addElement(String.valueOf(e_time));
-//		
-//	}//private void actionPerformed_cal(ActionEvent e)
-//
-//	private void actionPerformed_clear(ActionEvent e) {
-//		// TODO Auto-generated method stub
-//		
-//		model.clear();
-//		
-//		model_diff.clear();
-//		
-//	}//private void actionPerformed_clear(ActionEvent e)
-//
-//	private void actionPerformed_get_time(ActionEvent e) {
-//		// TODO Auto-generated method stub
-//		Locale locale = Locale.getDefault();
-//		
-//        Date date = new Date(e.getWhen());
-//        
-//        String s = DateFormat.getTimeInstance(DateFormat.LONG,
-//                locale).format(date);
-//        
-//        if (!model.isEmpty()) {
-//        	
-//        	int num = model.getSize();
-//        	
-//        	if (num >= 4) {
-//				
-//        		model.remove(0);
-//        		
-//			}//if (num == condition)
-//        	
-//        }
-//        
-//        long time_now = Methods.get_millsec_now();
-//        
-//        String s_time_now = Methods.get_time_Label(time_now);
-//        
-//        model.addElement(s_time_now);
-//        
-//	}//private void actionPerformed_get_time()
-//
-//}
+//		this.add(btn_clear);
+		
+		return panel;
+	}
+
+	public static void main(String[] args) {
+
+		init_map();
+		
+		SwingUtilities.invokeLater(new Runnable(){
+
+			@Override
+			public void run() {
+				
+				TC2_B1_v1_1 ex = new TC2_B1_v1_1();
+				
+				ex.setVisible(true);
+				
+			}//public void run()
+		});//SwingUtilities.invokeLater
+	}
+
+
+	private static void init_map() {
+		
+		map = new HashMap<String, String>();
+		
+		map.put("gt", "Get time");
+		map.put("cal", "Calculate");
+		map.put("cl", "Clear");
+		
+	}//private static void init_map()
+	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		JButton o = (JButton) e.getSource();
+		
+		String label = o.getText();
+		
+		if (label.equals(map.get("gt"))) {
+			
+			actionPerformed_get_time(e);
+			
+		} else if (label.equals(map.get("cal"))) {//if (label.equals(map.get("gt")))
+
+			actionPerformed_cal();
+			
+		} else if (label.equals(map.get("cl"))) {//if (label.equals(map.get("gt")))
+			
+			actionPerformed_clear(e);
+			
+		}//if (label.equals(map.get("gt")))
+		
+	}//public void actionPerformed(ActionEvent arg0)
+
+	private void actionPerformed_cal() {
+		
+		long duration = 0;
+		
+//		if (model.getSize() < 4) {
+		if (model.getSize() < 2) {
+			
+			return;
+			
+		}//if (model.getSize() == condition)
+		
+		//
+//		String[] start_time = model.get(1).split(" ")[1].split(":");
+//		String[] start_time = model.get(1).split(" ")[2].split(":");
+		String[] start_time = model.get(model.size() - 2).split(" ")[0].split(":");
+		
+		String[] end_time = model.get(model.size() - 1).split(" ")[0].split(":");
+		
+//		model.addElement(model.get(1).split(" ")[2]);
+//		model.addElement(start_time[0]);
+//		model.addElement(model.get(0));
+		
+		
+		Calendar c_start = Calendar.getInstance();
+		c_start.set(2013, 1, 10,
+				Integer.parseInt(start_time[0]),
+				Integer.parseInt(start_time[1]),
+				Integer.parseInt(start_time[2])
+		);
+		
+		long s_time = c_start.getTimeInMillis();
+
+		// End time
+		Calendar c_end = Calendar.getInstance();
+		c_end.set(2013, 1, 10,
+				Integer.parseInt(end_time[0]),
+				Integer.parseInt(end_time[1]),
+				Integer.parseInt(end_time[2])
+		);
+		
+		long e_time = c_end.getTimeInMillis();
+
+		long diff = e_time - s_time;
+		
+		String digit_time = Methods.convert_millsec_to_digit_label(diff);
+		
+//		model.addElement(String.valueOf(s_time));
+//		model.addElement(String.valueOf(e_time));
+		if (model_diff.getSize() >= 4) {
+			
+			model_diff.remove(0);
+			
+			model_diff.addElement(String.valueOf(digit_time));
+			
+		} else {//if (model_digit_time.getSize() > 4)
+			
+			model_diff.addElement(String.valueOf(digit_time));
+			
+		}//if (model_diff.getSize() > 4)
+		
+//		model_diff.addElement(String.valueOf(e_time));
+		
+	}//private void actionPerformed_cal(ActionEvent e)
+
+	private void actionPerformed_clear(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		model.clear();
+		
+		model_diff.clear();
+		
+	}//private void actionPerformed_clear(ActionEvent e)
+
+	private void actionPerformed_get_time(ActionEvent e) {
+		// TODO Auto-generated method stub
+		Locale locale = Locale.getDefault();
+		
+        Date date = new Date(e.getWhen());
+        
+        String s = DateFormat.getTimeInstance(DateFormat.LONG,
+                locale).format(date);
+        
+        if (!model.isEmpty()) {
+        	
+        	int num = model.getSize();
+        	
+        	if (num >= 4) {
+				
+        		model.remove(0);
+        		
+			}//if (num == condition)
+        	
+        }
+        
+        long time_now = Methods.get_millsec_now();
+        
+        String s_time_now = Methods.get_time_Label(time_now);
+        
+        model.addElement(s_time_now);
+        
+	}//private void actionPerformed_get_time()
+
+}
