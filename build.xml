@@ -34,10 +34,6 @@
     		<fileset dir="${image.dir.src}">
     		</fileset>
     	</copy>
-    	
-    	
-    	
-    	<echo message="${jar.dir}/*.* => chmod done: 755"></echo>
         
     	
     </target>
@@ -58,9 +54,6 @@
 -->       
         	
         </jar>
-    	
-    	<chmod file="/home/iwabuchiken/ws/ws_eclipse/TC2/build/jar/TC2.jar" perm="755"></chmod>
-    	
     </target>
 
     <target name="run" depends="jar">
