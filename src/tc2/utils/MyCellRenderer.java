@@ -25,11 +25,91 @@ public class MyCellRenderer implements ListCellRenderer {
 		boolean cellHasFocus){
 
 		if (isSelected){
-				label.setText("●	" + value.toString() + "●");
+			
+			
+			System.out.println(
+						"[" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "] "
+						+ "isSelected");
+			
+//			if (CONS.selectedItems.contains(Integer.valueOf(index))) {
+//				
+//				CONS.selectedItems.remove(index);
+//				
+//				label.setText(value.toString());
+//
+//				label.setBackground(Color.white);
+//				label.setForeground(Color.black);
+//
+//				
+//			} else {//if (CONS.selectedItems.contains(Integer.valueOf(index)))
+//				
+//				CONS.selectedItems.add(index);
+//				
+//				label.setText(value.toString());
+//				
+//				label.setBackground(Color.blue);
+//				label.setForeground(Color.white);
+//				
+//			}//if (CONS.selectedItems.contains(Integer.valueOf(index)))
+			
+			
+			
+//			CONS.selectedItems.add(index);
+//			
+			System.out.println(
+					"[" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "] "
+					+ "index=" + index);
 
-			label.setBackground(Color.red);
+			System.out.println(
+//					"[" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "] "
+					"[" + String.valueOf(Thread.currentThread().getStackTrace()[2].getLineNumber()) + "] "
+					+ "value=" + (String)value);
+
+			
+			label.setText(value.toString());
+			
+			label.setBackground(Color.blue);
 			label.setForeground(Color.white);
+			
+//				label.setText("●	" + value.toString() + "●");
+//
+//			label.setBackground(Color.red);
+//			label.setForeground(Color.white);
 		}else{
+			
+//			if (CONS.selectedItems.contains(Integer.valueOf(index))) {
+//				
+////				CONS.selectedItems.remove(index);
+//				
+//				label.setText(value.toString());
+//
+//				label.setBackground(Color.white);
+//				label.setForeground(Color.black);
+//
+//				
+//			} else {//if (CONS.selectedItems.contains(Integer.valueOf(index)))
+//				
+////				CONS.selectedItems.add(index);
+//				
+//				label.setText(value.toString());
+//				
+//				label.setBackground(Color.blue);
+//				label.setForeground(Color.white);
+//				
+//			}//if (CONS.selectedItems.contains(Integer.valueOf(index)))
+
+			System.out.println(
+					"[" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "] "
+					+ "is not selected");
+
+			System.out.println(
+					"[" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "] "
+					+ "index=" + index);
+
+			System.out.println(
+					"[" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "] "
+					+ "value=" + (String)value);
+
 			label.setText(value.toString());
 
 			label.setBackground(Color.white);

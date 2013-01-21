@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -30,6 +31,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import tc2.utils.CONS;
+import tc2.utils.MyCellRenderer;
+
 public class TC2_B1a extends JFrame implements ActionListener {
 
 	private JList<String> list;
@@ -45,11 +49,19 @@ public class TC2_B1a extends JFrame implements ActionListener {
     
 	public TC2_B1a() {
 		
+		initMembers();
+		
 		initUI();
 		
 		
 	}
 	
+	private void initMembers() {
+		
+		CONS.selectedItems = new ArrayList<Integer>();
+		
+	}//private void initMembers()
+
 	private void initUI() {
 		
 		JPanel panel = new JPanel();
@@ -83,50 +95,56 @@ public class TC2_B1a extends JFrame implements ActionListener {
         list = new JList(model);
         list.setBounds(200, 30, 220, 150);
         
+        
+        
+        
         // List for diff labels
 		model_diff = new DefaultListModel();
         list_diff = new JList(model_diff);
         list_diff.setBounds(200, 200, 220, 100);
+
+        MyCellRenderer renderer = new MyCellRenderer();
+		list.setCellRenderer(renderer);
         
         list.setFont(new Font("Century", Font.BOLD, 18));
         list_diff.setFont(new Font("Century", Font.BOLD, 18));
         
         // Listener
-        list_diff.addListSelectionListener(new ListSelectionListener(){
+//        list_diff.addListSelectionListener(new ListSelectionListener(){
+//
+//			@Override
+//			public void valueChanged(ListSelectionEvent arg0) {
+//				// TODO Auto-generated method stub
+//				String item = (String) list_diff.getSelectedValue();
+//				
+//				Toolkit kit = Toolkit.getDefaultToolkit();
+//				Clipboard clip = kit.getSystemClipboard();
+//				
+//				StringSelection ss = new StringSelection(item);
+//				
+//				clip.setContents(ss, ss);
+//				
+////				model_diff.addElement(item);
+//				
+//			}});
 
-			@Override
-			public void valueChanged(ListSelectionEvent arg0) {
-				// TODO Auto-generated method stub
-				String item = (String) list_diff.getSelectedValue();
-				
-				Toolkit kit = Toolkit.getDefaultToolkit();
-				Clipboard clip = kit.getSystemClipboard();
-				
-				StringSelection ss = new StringSelection(item);
-				
-				clip.setContents(ss, ss);
-				
-//				model_diff.addElement(item);
-				
-			}});
-
-        list.addListSelectionListener(new ListSelectionListener(){
-
-			@Override
-			public void valueChanged(ListSelectionEvent arg0) {
-				// TODO Auto-generated method stub
-				String item = (String) list.getSelectedValue();
-				
-				Toolkit kit = Toolkit.getDefaultToolkit();
-				Clipboard clip = kit.getSystemClipboard();
-				
-				StringSelection ss = new StringSelection(item);
-				
-				clip.setContents(ss, ss);
-				
-//				model_diff.addElement(item);
-				
-			}});
+//        list.addListSelectionListener(new ListSelectionListener(){
+//
+//			@Override
+//			public void valueChanged(ListSelectionEvent arg0) {
+//				// TODO Auto-generated method stub
+//				String item = (String) list.getSelectedValue();
+//				
+//				Toolkit kit = Toolkit.getDefaultToolkit();
+//				Clipboard clip = kit.getSystemClipboard();
+//				
+//				StringSelection ss = new StringSelection(item);
+//				
+//				clip.setContents(ss, ss);
+//				
+////				model_diff.addElement(item);
+//				
+//			}});
 
 //        // Scroll pane
 ////        JScrollPane sp = new JScrollPane();

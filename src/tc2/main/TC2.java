@@ -183,7 +183,10 @@ public class TC2 extends JFrame implements ActionListener {
 
 	private void initUI_frame(JFrame frame) {
 		// TODO Auto-generated method stub
-		setTitle("E2");
+		String title = this.getClass().getName();
+		
+//		setTitle("E2");
+		setTitle(title);
 		
 		frame.setSize(600, 400);
 		

@@ -24,6 +24,9 @@
         <mkdir dir="${classes.dir}"/>
     	<!--<mkdir dir="${image.dir.dst}"/>-->
 
+    	<!-- http://etutorials.org/Programming/Java+extreme+programming/Chapter+3.+Ant/3.6+Passing+Arguments+to+a+Buildfile/ -->
+    	<echo message="Main class => ${main-class}" ></echo>
+    	
     	<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
    
 <!--    	<copy file="${image.dir}/*.png" todir="${classes.dir}"></copy>	-->
