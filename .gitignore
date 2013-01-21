@@ -11,3 +11,4 @@
 .git/*
 build/jar/
 build/jar/*
+*.jar
