@@ -202,8 +202,6 @@ public class TC2 extends JFrame implements ActionListener {
 		btn_time.setBounds(50, 60, 130, 50);
 		
 		btn_time.addActionListener(this);
-		btn_time.setMnemonic(KeyEvent.VK_G);
-		
 		
 		// Calculate the duration
 		btn_calculate = new JButton(map.get("cal"));
