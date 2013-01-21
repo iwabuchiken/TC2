@@ -9,4 +9,5 @@
 *.zip
 .git
 .git/*
-*.jar
+build/jar/
+build/jar/*
