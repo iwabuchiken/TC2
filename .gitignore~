@@ -11,7 +11,5 @@
 .git/*
 build/jar/
 build/jar/*
-<<<<<<< HEAD
 *.jar
-=======
->>>>>>> B2_ant_chmod
+
