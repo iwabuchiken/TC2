@@ -212,6 +212,8 @@ public class TC2 extends JFrame implements ActionListener {
 		
 		btn_calculate.addActionListener(this);
 		
+		btn_calculate.setMnemonic(KeyEvent.VK_C);
+		
 		// Clear the labels
 		
 		btn_clear = new JButton(map.get("cl"));
@@ -219,6 +221,8 @@ public class TC2 extends JFrame implements ActionListener {
 		btn_clear.setBounds(50, 180, 130, 50);
 		
 		btn_clear.addActionListener(this);
+		
+		btn_clear.setMnemonic(KeyEvent.VK_L);
 		
 		// Add to panel
 		panel.add(btn_time);
