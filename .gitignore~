@@ -9,7 +9,3 @@
 *.zip
 .git
 .git/*
-build/jar/
-build/jar/*
-*.jar
-

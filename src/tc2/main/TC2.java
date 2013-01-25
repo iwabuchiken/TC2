@@ -183,10 +183,7 @@ public class TC2 extends JFrame implements ActionListener {
 
 	private void initUI_frame(JFrame frame) {
 		// TODO Auto-generated method stub
-		String title = this.getClass().getName();
-		
-//		setTitle("E2");
-		setTitle(title);
+		setTitle("E2");
 		
 		frame.setSize(600, 400);
 		
@@ -203,16 +200,12 @@ public class TC2 extends JFrame implements ActionListener {
 		
 		btn_time.addActionListener(this);
 		
-		btn_time.setMnemonic(KeyEvent.VK_G);
-		
 		// Calculate the duration
 		btn_calculate = new JButton(map.get("cal"));
 		
 		btn_calculate.setBounds(50, 120, 130, 50);
 		
 		btn_calculate.addActionListener(this);
-		
-		btn_calculate.setMnemonic(KeyEvent.VK_C);
 		
 		// Clear the labels
 		
@@ -221,8 +214,6 @@ public class TC2 extends JFrame implements ActionListener {
 		btn_clear.setBounds(50, 180, 130, 50);
 		
 		btn_clear.addActionListener(this);
-		
-		btn_clear.setMnemonic(KeyEvent.VK_L);
 		
 		// Add to panel
 		panel.add(btn_time);

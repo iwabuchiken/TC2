@@ -14,24 +14,16 @@
 	<!--<property name="image.dir.dst" value="${classes.dir}/${project-root}/image"/>-->
 	<property name="image.dir.dst"
 			value="${classes.dir}/tc2/main"/>
-    <property name="jar-files"     value="${jar.dir}/*.jar"/>
-    <property name="jar-perm"     value="755"/>
 
 <!-- Targets -->
-    <target name="clean"
-    	description="Delete the build directory">
+    <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
-<!-- On help: http://amazing-development.com/archives/2005/01/28/ant-help-target/ -->
-    <target name="compile"
-    	description="=> Compile source files in src directory, put class file into build/classes directory, and also, image files in src/image into build/classes as well"
-    	>
+
+    <target name="compile">
         <mkdir dir="${classes.dir}"/>
     	<!--<mkdir dir="${image.dir.dst}"/>-->
 
-    	<!-- http://etutorials.org/Programming/Java+extreme+programming/Chapter+3.+Ant/3.6+Passing+Arguments+to+a+Buildfile/ -->
-    	<echo message="Main class => ${main-class}" ></echo>
-    	
     	<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
    
 <!--    	<copy file="${image.dir}/*.png" todir="${classes.dir}"></copy>	-->
@@ -43,8 +35,7 @@
     	
     </target>
 
-    <target name="jar" depends="compile"
-    	description="=> Execute the target &quot;compile&quot;, then put class files into a jar file, then finally, change the mode of the generated jar file into 755">
+    <target name="jar" depends="compile">
         <mkdir dir="${jar.dir}"/>
         <jar
         	destfile="${jar.dir}/${ant.project.name}.jar"
@@ -60,18 +51,12 @@
 -->       
         	
         </jar>
-    	
-    	<chmod file="${jar-files}" perm="${jar-perm}"></chmod>
-    	<echo message="chomod ${jar-perm} => Done: ${jar-files}"></echo>
-    	
     </target>
 
-    <target name="run" depends="jar"
-    	description="Run the jar file in build/jar">
+    <target name="run" depends="jar">
     	<java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
     </target>
 
-	<target name="main" depends="clean,run"
-		description="Execute the target &quot;clean&quot;, followed by &quot;run&quot;"/>
+	<target name="main" depends="clean,run"/>
 	
 </project>
