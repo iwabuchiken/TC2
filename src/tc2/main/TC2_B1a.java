@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -31,8 +30,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import tc2.utils.CONS;
-import tc2.utils.MyCellRenderer;
+import tc2.utils.CheckBoxList;
 
 public class TC2_B1a extends JFrame implements ActionListener {
 
@@ -47,21 +45,15 @@ public class TC2_B1a extends JFrame implements ActionListener {
 
     private static HashMap<String, String> map;
     
+    private CheckBoxList listCheckBox;
+    
 	public TC2_B1a() {
-		
-		initMembers();
 		
 		initUI();
 		
 		
 	}
 	
-	private void initMembers() {
-		
-		CONS.selectedItems = new ArrayList<Integer>();
-		
-	}//private void initMembers()
-
 	private void initUI() {
 		
 		JPanel panel = new JPanel();
@@ -91,60 +83,81 @@ public class TC2_B1a extends JFrame implements ActionListener {
 	private void initUI_3_list(JPanel panel) {
 		// TODO Auto-generated method stub
 		// List for time labels
+		/*********************************
+		 * Initialize components
+		 *********************************/
 		model = new DefaultListModel();
         list = new JList(model);
         list.setBounds(200, 30, 220, 150);
-        
-        
-        
         
         // List for diff labels
 		model_diff = new DefaultListModel();
         list_diff = new JList(model_diff);
         list_diff.setBounds(200, 200, 220, 100);
-
-        MyCellRenderer renderer = new MyCellRenderer();
-		list.setCellRenderer(renderer);
         
         list.setFont(new Font("Century", Font.BOLD, 18));
         list_diff.setFont(new Font("Century", Font.BOLD, 18));
         
-        // Listener
-//        list_diff.addListSelectionListener(new ListSelectionListener(){
-//
-//			@Override
-//			public void valueChanged(ListSelectionEvent arg0) {
-//				// TODO Auto-generated method stub
-//				String item = (String) list_diff.getSelectedValue();
-//				
-//				Toolkit kit = Toolkit.getDefaultToolkit();
-//				Clipboard clip = kit.getSystemClipboard();
-//				
-//				StringSelection ss = new StringSelection(item);
-//				
-//				clip.setContents(ss, ss);
-//				
-////				model_diff.addElement(item);
-//				
-//			}});
+        // CheckBoxList
+        listCheckBox = new CheckBoxList();
+        listCheckBox.setFont(new Font("Century", Font.BOLD, 18));
+        
+        /*********************************
+		 * Set listeners
+		 *********************************/
+        listCheckBox.addListSelectionListener(new ListSelectionListener(){
 
-//        list.addListSelectionListener(new ListSelectionListener(){
-//
-//			@Override
-//			public void valueChanged(ListSelectionEvent arg0) {
-//				// TODO Auto-generated method stub
-//				String item = (String) list.getSelectedValue();
-//				
-//				Toolkit kit = Toolkit.getDefaultToolkit();
-//				Clipboard clip = kit.getSystemClipboard();
-//				
-//				StringSelection ss = new StringSelection(item);
-//				
-//				clip.setContents(ss, ss);
-//				
-////				model_diff.addElement(item);
-//				
-//			}});
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				String item = (String) listCheckBox.getSelectedValue();
+				
+				Toolkit kit = Toolkit.getDefaultToolkit();
+				Clipboard clip = kit.getSystemClipboard();
+				
+				StringSelection ss = new StringSelection(item);
+				
+				clip.setContents(ss, ss);
+				
+//				model_diff.addElement(item);
+				
+			}});
+
+        list_diff.addListSelectionListener(new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				String item = (String) list_diff.getSelectedValue();
+				
+				Toolkit kit = Toolkit.getDefaultToolkit();
+				Clipboard clip = kit.getSystemClipboard();
+				
+				StringSelection ss = new StringSelection(item);
+				
+				clip.setContents(ss, ss);
+				
+//				model_diff.addElement(item);
+				
+			}});
+
+        list.addListSelectionListener(new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				String item = (String) list.getSelectedValue();
+				
+				Toolkit kit = Toolkit.getDefaultToolkit();
+				Clipboard clip = kit.getSystemClipboard();
+				
+				StringSelection ss = new StringSelection(item);
+				
+				clip.setContents(ss, ss);
+				
+//				model_diff.addElement(item);
+				
+			}});
 
 //        // Scroll pane
 ////        JScrollPane sp = new JScrollPane();
@@ -164,7 +177,8 @@ public class TC2_B1a extends JFrame implements ActionListener {
 //        panel.add(sp_diff);
 
         // Add to panel
-        panel.add(list);
+//        panel.add(list);
+        panel.add(listCheckBox);
         panel.add(list_diff);
 	}
 
@@ -201,7 +215,10 @@ public class TC2_B1a extends JFrame implements ActionListener {
 
 	private void initUI_frame(JFrame frame) {
 		// TODO Auto-generated method stub
-		setTitle("E2");
+		String title = this.getClass().getName();
+		
+//		setTitle("E2");
+		setTitle(title);
 		
 		frame.setSize(600, 400);
 		
@@ -218,12 +235,16 @@ public class TC2_B1a extends JFrame implements ActionListener {
 		
 		btn_time.addActionListener(this);
 		
+		btn_time.setMnemonic(KeyEvent.VK_G);
+		
 		// Calculate the duration
 		btn_calculate = new JButton(map.get("cal"));
 		
 		btn_calculate.setBounds(50, 120, 130, 50);
 		
 		btn_calculate.addActionListener(this);
+		
+		btn_calculate.setMnemonic(KeyEvent.VK_C);
 		
 		// Clear the labels
 		
@@ -232,6 +253,8 @@ public class TC2_B1a extends JFrame implements ActionListener {
 		btn_clear.setBounds(50, 180, 130, 50);
 		
 		btn_clear.addActionListener(this);
+		
+		btn_clear.setMnemonic(KeyEvent.VK_L);
 		
 		// Add to panel
 		panel.add(btn_time);

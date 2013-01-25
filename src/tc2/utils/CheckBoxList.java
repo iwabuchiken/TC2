@@ -46,17 +46,27 @@ public class CheckBoxList extends JList {
 				boolean isSelected, boolean cellHasFocus) {
 			
 			JCheckBox checkbox = (JCheckBox) value;
+			
 			checkbox.setBackground(isSelected ?
-			getSelectionBackground() : getBackground());
+					getSelectionBackground() : getBackground());
+			
 			checkbox.setForeground(isSelected ?
-			getSelectionForeground() : getForeground());
+					getSelectionForeground() : getForeground());
+			
 			checkbox.setEnabled(isEnabled());
+			
 			checkbox.setFont(getFont());
+			
 			checkbox.setFocusPainted(false);
+			
 			checkbox.setBorderPainted(true);
+			
 			checkbox.setBorder(isSelected ?
-			UIManager.getBorder(
-					"List.focusCellHighlightBorder") : noFocusBorder);
+				UIManager.getBorder(
+						"List.focusCellHighlightBorder") : noFocusBorder);
+			
+			
+			
 			return checkbox;
 		}//public Component getListCellRendererComponent
 	}//protected class CellRenderer implements ListCellRenderer
