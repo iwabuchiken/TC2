@@ -9,6 +9,8 @@
 *.zip
 .git
 .git/*
+<<<<<<< HEAD
+=======
+
+>>>>>>> B1a_checkbox_list
 *.jar
-build/
-build/*
