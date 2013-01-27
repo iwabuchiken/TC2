@@ -12,3 +12,5 @@
 *.jar
 build/
 build/*
+swing-hacks-examples-20060109/
+swing-hacks-examples-20060109/*
