@@ -30,6 +30,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+
 public class TC2 extends JFrame implements ActionListener {
 
 	private JList<String> list;
@@ -254,6 +255,8 @@ public class TC2 extends JFrame implements ActionListener {
 
 	public static void main(String[] args) {
 
+//		ABC.showMessage("YES");
+		
 		init_map();
 		
 		SwingUtilities.invokeLater(new Runnable(){
