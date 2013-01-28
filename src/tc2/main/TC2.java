@@ -40,6 +40,7 @@ public class TC2 extends JFrame implements ActionListener {
     private JButton btn_time;
     private JButton btn_clear;
     private JButton btn_calculate;
+    private JButton btnExit;
 
     private static HashMap<String, String> map;
     
@@ -82,7 +83,7 @@ public class TC2 extends JFrame implements ActionListener {
 		model = new DefaultListModel();
         list = new JList(model);
         list.setBounds(200, 30, 220, 150);
-        
+      
         // List for diff labels
 		model_diff = new DefaultListModel();
         list_diff = new JList(model_diff);
@@ -198,10 +199,14 @@ public class TC2 extends JFrame implements ActionListener {
 		
 		btn_time.setBounds(50, 60, 130, 50);
 		
+		btn_time.setMnemonic(KeyEvent.VK_G);
+		
 		btn_time.addActionListener(this);
 		
 		// Calculate the duration
 		btn_calculate = new JButton(map.get("cal"));
+		
+		btn_calculate.setMnemonic(KeyEvent.VK_C);
 		
 		btn_calculate.setBounds(50, 120, 130, 50);
 		
@@ -211,14 +216,32 @@ public class TC2 extends JFrame implements ActionListener {
 		
 		btn_clear = new JButton(map.get("cl"));
 		
+		btn_clear.setMnemonic(KeyEvent.VK_L);
+		
 		btn_clear.setBounds(50, 180, 130, 50);
 		
 		btn_clear.addActionListener(this);
 		
-		// Add to panel
+		/*********************************
+		 * Button: Exit
+		 *********************************/
+		btnExit = new JButton(map.get("ex"));
+		
+//		btnExit.setMnemonic(KeyEvent.VK_E);
+		btnExit.setMnemonic(KeyEvent.VK_X);
+		
+		btnExit.setBounds(50, 240, 130, 50);
+		
+		btnExit.addActionListener(this);
+		
+		
+		/*********************************
+		 * Add to panel
+		 *********************************/
 		panel.add(btn_time);
 		panel.add(btn_calculate);
 		panel.add(btn_clear);
+		panel.add(btnExit);
 		
 //		// Clear
 //		btn_clear = new JButton("Clear");
@@ -254,6 +277,7 @@ public class TC2 extends JFrame implements ActionListener {
 		map.put("gt", "Get time");
 		map.put("cal", "Calculate");
 		map.put("cl", "Clear");
+		map.put("ex", "Exit");
 		
 	}//private static void init_map()
 	
@@ -278,9 +302,18 @@ public class TC2 extends JFrame implements ActionListener {
 			
 			actionPerformed_clear(e);
 			
-		}//if (label.equals(map.get("gt")))
+		}  else if (label.equals(map.get("ex"))) {//if (label.equals(map.get("gt")))
+			
+			actionPerformed_exit(e);
+			
+		}
 		
 	}//public void actionPerformed(ActionEvent arg0)
+
+	private void actionPerformed_exit(ActionEvent e) {
+		// TODO 自動生成されたメソッド・スタブ
+		System.exit(0);
+	}
 
 	private void actionPerformed_cal() {
 		
