@@ -1,6 +1,6 @@
 a
 pushd /home/iwabuchiken/ws/ws_eclipse/TC2/
-gitk
+gitk &
 
 C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WS\WS_Android~\FM\Programs\Time_calculator(Java)\Time_calculator(Java).mm
 
