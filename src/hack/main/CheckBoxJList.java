@@ -9,9 +9,13 @@ import java.util.*;
 public class CheckBoxJList extends JList
     implements ListSelectionListener {
 
+//	static JFrame frame;
+	
     static Color listForeground, listBackground,
         listSelectionForeground,
         listSelectionBackground;
+
+	private static JButton btnTime;
 
     static {
         UIDefaults uid = UIManager.getLookAndFeel().getDefaults();
@@ -29,6 +33,11 @@ public class CheckBoxJList extends JList
 
     public CheckBoxJList() {
         super();
+        
+        //debug
+        setName("ABCDE");
+        /////////////////////////
+        
         setCellRenderer (new CheckBoxListCellRenderer());
         addListSelectionListener (this);
     }//public CheckBoxJList()
@@ -88,7 +97,7 @@ public class CheckBoxJList extends JList
 
     public static void main (String[] args) {
     	
-    	debugs_B4();
+//    	debugs_B4();
     	
         JList list = new CheckBoxJList ();
         
@@ -112,22 +121,45 @@ public class CheckBoxJList extends JList
                             ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         
         JFrame frame = new JFrame ("Checkbox JList");
+//        frame = new JFrame ("Checkbox JList");
         
+    	debugs_B4(frame);
+    	
         frame.getContentPane().add (scroller);
         
-        frame.pack();
+//        frame.pack();
         
         frame.setVisible(true);
     }
 
 
-    private static void debugs_B4() {
+    private static void debugs_B4(JFrame frame) {
 		// TODO 自動生成されたメソッド・スタブ
 //    	debug_B4_v_1_0();
 //    	debug_B4_v_1_0_2_getColor();
-    	debug_B4_v_1_0_3_ScrollPaneConstants();
+//    	debug_B4_v_1_0_3_ScrollPaneConstants();
+//    	debug_B4_v_2_0_1_addButtons(frame);
 
 	}//private static void debugs_B4()
+
+	private static void debug_B4_v_2_0_1_addButtons(JFrame frame) {
+		// TODO 自動生成されたメソッド・スタブ
+        //debug =========================
+		frame.setLayout(new BorderLayout());
+//        frame.getContentPane().setLayout(new BorderLayout());
+		
+		
+		////////////////////////////debug
+        frame.setSize(200, 200);
+        
+//		btnTime = new JButton("Get");
+//		
+//		btnTime.setBounds(20, 20, 70, 40);
+//
+//		frame.getContentPane().add(btnTime);
+        
+		
+	}//private static void debug_B4_v_2_0_1_addButtons()
 
 	private static void debug_B4_v_1_0_3_ScrollPaneConstants() {
 		// TODO 自動生成されたメソッド・スタブ
@@ -823,12 +855,19 @@ public class CheckBoxJList extends JList
 
 	class CheckBoxListCellRenderer extends JComponent 
         implements ListCellRenderer {
+		
         DefaultListCellRenderer defaultComp;
+        
         JCheckBox checkbox;
+        
         public CheckBoxListCellRenderer() {
+        	
             setLayout (new BorderLayout());
+            
             defaultComp = new DefaultListCellRenderer();
+            
             checkbox = new JCheckBox();
+            
             add (checkbox, BorderLayout.WEST);
             add (defaultComp, BorderLayout.CENTER);
         }
@@ -840,6 +879,15 @@ public class CheckBoxJList extends JList
                                                       boolean cellHasFocus){
             defaultComp.getListCellRendererComponent (list, value, index,
                                                       isSelected, cellHasFocus);
+            
+            //debug
+            System.out.println("list.getName()=" + list.getName());
+			System.out.println("isSelected=" + isSelected);
+			System.out.println("cellHasFocus=" + cellHasFocus);
+			System.out.println("value=" + value);
+            
+            ///////////////////////////////
+            
             /*
             checkbox.setSelected (isSelected);
             checkbox.setForeground (isSelected ?
@@ -850,6 +898,7 @@ public class CheckBoxJList extends JList
                                     listBackground);
             */
             checkbox.setSelected (isSelected);
+            
             Component[] comps = getComponents();
             for (int i=0; i<comps.length; i++) {
                 comps[i].setForeground (listForeground);
