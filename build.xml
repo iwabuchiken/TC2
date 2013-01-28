@@ -14,7 +14,14 @@
 	<!--<property name="image.dir.dst" value="${classes.dir}/${project-root}/image"/>-->
 	<property name="image.dir.dst"
 			value="${classes.dir}/tc2/main"/>
+	
+	<property name="jar.permission" value="755"/>
 
+<!-- Class paths -->
+	<path id="classpath">
+	    <pathelement location="/home/iwabuchiken/ws/ws_eclipse/TC2/src/" />
+	</path>
+	
 <!-- Targets -->
     <target name="clean">
         <delete dir="${build.dir}"/>
@@ -24,7 +31,10 @@
         <mkdir dir="${classes.dir}"/>
     	<!--<mkdir dir="${image.dir.dst}"/>-->
 
-    	<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+    	<javac srcdir="${src.dir}" destdir="${classes.dir}">
+    		<!--<classpath refid="classpath">-->
+    		<!--</classpath>-->
+    	</javac>
    
 <!--    	<copy file="${image.dir}/*.png" todir="${classes.dir}"></copy>	-->
     	<copy todir="${image.dir.dst}">
@@ -51,6 +61,13 @@
 -->       
         	
         </jar>
+    	
+    	<chmod perm="${jar.permission}">
+    		<fileset dir="${jar.dir}"></fileset>
+    	</chmod>
+    	
+    	<echo message="Permission of jar files changed => ${jar.permission}"></echo>
+    	
     </target>
 
     <target name="run" depends="jar">
