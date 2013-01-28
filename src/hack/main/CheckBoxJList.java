@@ -29,6 +29,11 @@ public class CheckBoxJList extends JList
 
     public CheckBoxJList() {
         super();
+        
+        //debug
+        setName("ABCDE");
+        /////////////////////////
+        
         setCellRenderer (new CheckBoxListCellRenderer());
         addListSelectionListener (this);
     }//public CheckBoxJList()
@@ -823,12 +828,19 @@ public class CheckBoxJList extends JList
 
 	class CheckBoxListCellRenderer extends JComponent 
         implements ListCellRenderer {
+		
         DefaultListCellRenderer defaultComp;
+        
         JCheckBox checkbox;
+        
         public CheckBoxListCellRenderer() {
+        	
             setLayout (new BorderLayout());
+            
             defaultComp = new DefaultListCellRenderer();
+            
             checkbox = new JCheckBox();
+            
             add (checkbox, BorderLayout.WEST);
             add (defaultComp, BorderLayout.CENTER);
         }
@@ -840,6 +852,15 @@ public class CheckBoxJList extends JList
                                                       boolean cellHasFocus){
             defaultComp.getListCellRendererComponent (list, value, index,
                                                       isSelected, cellHasFocus);
+            
+            //debug
+            System.out.println("list.getName()=" + list.getName());
+			System.out.println("isSelected=" + isSelected);
+			System.out.println("cellHasFocus=" + cellHasFocus);
+			System.out.println("value=" + value);
+            
+            ///////////////////////////////
+            
             /*
             checkbox.setSelected (isSelected);
             checkbox.setForeground (isSelected ?
@@ -850,6 +871,7 @@ public class CheckBoxJList extends JList
                                     listBackground);
             */
             checkbox.setSelected (isSelected);
+            
             Component[] comps = getComponents();
             for (int i=0; i<comps.length; i++) {
                 comps[i].setForeground (listForeground);
