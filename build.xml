@@ -1,3 +1,38 @@
+<!--****************************************
+1. Targets:
+	clean
+		Default: Delete build/classes only. You can use option to
+				delete both build/dev and build/release
+	
+	setup-folders
+		Make folders: build, build/classes, build/dev, build/release
+	
+	jar
+		Make a jar file. Copy it to build/dev. If you want it to copy
+		also to build/release use option: -Dopt.release=
+			e.g. ant -Dopt.release=
+
+2. Folers:
+	build
+		Contains generated files in the ant build process.
+
+	build/classes
+		Class files.
+	
+	build/dev
+		Every jar files, including those generated in non-master
+			branches.
+	
+	build/release
+		TC2.jar. The jar file that you can use in the batch terminal
+			to launch a working TC2 application. 
+
+3. System requirements (Teste environments)
+
+	Linux ubuntu 3.5.0-22-generic i686 athlon i686 GNU/Linux
+		
+
+****************************************-->
 <project name="TC2" basedir="." default="main">
 
 	<property name="src.dir"     value="src"/>
@@ -5,6 +40,9 @@
     <property name="build.dir"   value="build"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir"     value="${build.dir}/jar"/>
+	
+	<property name="build.release.dir"     value="${build.dir}/release"/>
+	<property name="build.dev.dir"     value="${build.dir}/dev"/>
 	
     <property name="main-class"  value="tc2.main.TC2"/>
 	
@@ -16,20 +54,56 @@
 			value="${classes.dir}/tc2/main"/>
 	
 	<property name="jar.permission" value="755"/>
+	
+	
 
-<!-- Class paths -->
+	
+<!-- Conditions *********************************************-->
+	<condition property="have.dev.dir">
+	  <available file="${build.dev.dir}" />
+	</condition>
+	
+	<condition property="opt.release" value="false">
+		<equals arg1="${opt.release}" arg2="yes"/>
+	</condition>
+	
+<!--	<condition property="opt.release">-->
+<!--	  <istrue value="${opt.release}"/>-->
+<!--	</condition>-->
+	
+<!-- Class paths *********************************************-->
 	<path id="classpath">
 	    <pathelement location="/home/iwabuchiken/ws/ws_eclipse/TC2/src/" />
 	</path>
 
 	
-<!-- Targets -->
+<!-- Targets *************************************************-->
+	
+	<!-- ********* clean  ********* -->
     <target name="clean">
-        <delete dir="${build.dir}"/>
+        <delete dir="${classes.dir}"/>
     </target>
-
-    <target name="compile">
+	
+	<!-- ********* check-build-folders  ********* -->
+	<target name="check-build-folders" if="have.dev.dir">
+		<echo message="Folder exists => ${build.dev.dir}"></echo>
+	</target>
+	
+	<!-- ********* setup-folders  ********* -->
+	<target name="setup-folders" depends="check-build-folders">
         <mkdir dir="${classes.dir}"/>
+		<echo message="Folder created => ${classes.dir}"></echo>
+		
+    	<mkdir dir="${build.release.dir}"/>
+    	<echo message="Folder created => ${build.release.dir}"></echo>
+		
+    	<mkdir dir="${build.dev.dir}"/>
+    	<echo message="Folder created => ${build.dev.dir}"></echo>
+		
+	</target>
+
+	<!-- ********* compile  ********* -->
+    <target name="compile" depends="setup-folders">
     	<!--<mkdir dir="${image.dir.dst}"/>-->
 
     	<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
@@ -46,6 +120,7 @@
     	
     </target>
 
+	<!-- ********* jar  ********* -->
     <target name="jar" depends="compile">
         <mkdir dir="${jar.dir}"/>
         <jar
@@ -63,18 +138,45 @@
         	
         </jar>
     	
+    	<echo message="Jar file created: ${jar.dir}/${ant.project.name}.jar"></echo>
+    	
+		<copy todir="${build.dev.dir}" file="${jar.dir}/${ant.project.name}.jar"/>
+    	
+    	<echo message="Jar file copied to directory: ${build.dev.dir}"></echo>
+    	
     	<chmod perm="${jar.permission}">
     		<fileset dir="${jar.dir}"></fileset>
+    		<fileset dir="${build.dev.dir}"></fileset>
     	</chmod>
     	
     	<echo message="Permission of jar files changed => ${jar.permission}"></echo>
     	
     </target>
 
-    <target name="run" depends="jar">
-    	<java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+	<!-- ********* run  ********* -->
+    <target name="run" depends="jar, release">
+    	
+    	<echo message="Running the jar file: ${build.release.dir}/${ant.project.name}.jar"></echo>
+    	
+    	<!--<java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>-->
+    	<java jar="${build.release.dir}/${ant.project.name}.jar" fork="true"/>
     </target>
 
+	<!-- ********* release  ********* -->
+    <target name="release" if="opt.release">
+    	<echo message="release option => True"></echo>
+    	
+    	<copy todir="${build.release.dir}" file="${jar.dir}/${ant.project.name}.jar"/>
+    	
+    	<echo message="Jar file copied to: ${build.release.dir}"></echo>
+    	
+    	<chmod perm="${jar.permission}">
+    		<fileset dir="${build.dev.dir}"></fileset>
+    	</chmod>
+
+    </target>
+	
+	<!-- ********* main  ********* -->
 	<target name="main" depends="clean,run"/>
 	
 </project>
