@@ -32,7 +32,7 @@
         <mkdir dir="${classes.dir}"/>
     	<!--<mkdir dir="${image.dir.dst}"/>-->
 
-    	<javac srcdir="${src.dir}" destdir="${classes.dir}">
+    	<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
     		<!--<classpath refid="classpath">-->
     		<!--</classpath>-->
     	</javac>

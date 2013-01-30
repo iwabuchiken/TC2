@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Point;
-import java.awt.Rectangle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,9 +13,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import org.dyno.visual.swing.layouts.Constraints;
-import org.dyno.visual.swing.layouts.GroupLayout;
-import org.dyno.visual.swing.layouts.Leading;
+//import org.dyno.visual.swing.layouts.Constraints;
+//import org.dyno.visual.swing.layouts.GroupLayout;
+//import org.dyno.visual.swing.layouts.Leading;
 
 public class TC2_B5_v_1_2 extends JFrame {
 
@@ -34,15 +32,19 @@ public class TC2_B5_v_1_2 extends JFrame {
 	/*********************************
 	 * Positions: Buttons
 	 *********************************/
-	int x1 = 40;
+	int x1 = 20;
 	int y1 = 50;
-	int btnWidth = 100;
+	int btnWidth = 140;
 	int btnHeight = 25;
 	
 	private JMenuItem getMiFile() {
 		if (miExit == null) {
 			miExit = new JMenuItem();
 			miExit.setText("Exit");
+			
+//			miExit.setName(CONS.BtnNames.BtnExit.name());
+//			
+//			miExit.addActionListener(new BtnActionListener());
 		}
 		return miExit;
 	}
@@ -70,11 +72,15 @@ public class TC2_B5_v_1_2 extends JFrame {
 			panelButtons.setBackground(new Color(53, 63, 233));
 			panelButtons.setForeground(new Color(255, 253, 253));
 			panelButtons.setPreferredSize(new Dimension(200, 100));
-			panelButtons.setLayout(new GroupLayout());
-			panelButtons.add(getBtnGetTime(), new Constraints(new Leading(55, 10, 10), new Leading(53, 10, 10)));
-			panelButtons.add(getBtnClear(), new Constraints(new Leading(57, 10, 10), new Leading(184, 10, 10)));
-			panelButtons.add(getBtnExit(), new Constraints(new Leading(61, 10, 10), new Leading(251, 10, 10)));
-			panelButtons.add(getBtnCalc(), new Constraints(new Leading(55, 102, 12, 12), new Leading(121, 10, 10)));
+			panelButtons.setLayout(null);
+			
+			/*********************************
+			 * Buttons
+			 *********************************/
+			panelButtons.add(getBtnGetTime());
+			panelButtons.add(getBtnClear());
+			panelButtons.add(getBtnExit());
+			panelButtons.add(getBtnCalc());
 		}
 		return panelButtons;
 	}
@@ -107,6 +113,9 @@ public class TC2_B5_v_1_2 extends JFrame {
 			
 			btnExit.setFont(new Font("ＭＳ 明朝", Font.BOLD | Font.ITALIC, 20));
 
+			btnExit.setName(CONS.BtnNames.BtnExit.name());
+			
+			btnExit.addActionListener(new BtnActionListener());
 		}
 		return btnExit;
 	}
@@ -125,6 +134,7 @@ public class TC2_B5_v_1_2 extends JFrame {
 			
 			btnClear.setFont(new Font("ＭＳ 明朝", Font.BOLD | Font.ITALIC, 20));
 
+			btnClear.addActionListener(new BtnActionListener());
 			
 //			btnClear.setBounds(new Rectangle(new Point()))
 			
@@ -135,19 +145,13 @@ public class TC2_B5_v_1_2 extends JFrame {
 	private JButton getBtnCalc() {
 		if (btnCalculate == null) {
 			btnCalculate = new JButton();
+			btnCalculate.setFont(new Font("Dialog", Font.BOLD | java.awt.Font.ITALIC, 20));
 			btnCalculate.setText("Calculate");
 			
-			btnCalculate.setContentAreaFilled(true);
-//			
-//			btnGetTime.setDefaultCapable(false);
+//			btnCalculate.setBounds(x1, 95, 150, 30);
+			btnCalculate.setBounds(x1, 95, btnWidth, btnHeight);
 			
-//			btnGetTime.setBounds(new Rectangle(new Point(55, 50), new Dimension(40, 25)));
-//			btnCalculate.setBounds(x1, 95, btnWidth, btnHeight);
-			btnCalculate.setFont(new Font("ＭＳ 明朝", Font.BOLD | Font.ITALIC, 20));
-
-			btnCalculate.setBounds(x1, 95, 100, btnHeight);
-			btnCalculate.setSize(100, 30);
-			
+			btnCalculate.addActionListener(new BtnActionListener());
 		}
 		return btnCalculate;
 	}
@@ -169,6 +173,10 @@ public class TC2_B5_v_1_2 extends JFrame {
 			btnGetTime.setBounds(x1, 50, btnWidth, btnHeight);
 			
 			btnGetTime.setFont(new Font("ＭＳ 明朝", Font.BOLD | Font.ITALIC, 20));
+			
+			btnGetTime.setName(CONS.BtnNames.BtnGetTime.name());
+			
+			btnGetTime.addActionListener(new BtnActionListener());
 			
 //			btnGetTime.setBackground(new Color(255, 253, 253));
 //			btnGetTime.setForeground(new Color(0, 0, 0));
