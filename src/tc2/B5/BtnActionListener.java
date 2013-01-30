@@ -1,4 +1,4 @@
-package tc2.B5.v1_2.main;
+package tc2.B5;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +20,19 @@ public class BtnActionListener  implements ActionListener {
 		String label = o.getText();
 		
 		String name = o.getName();
+		
+		if (name == null) {
+			
+			//debug =========================
+			System.out.println("["
+					+ (new Throwable()).getStackTrace()[0].getFileName() + ":"
+					+ (new Throwable()).getStackTrace()[0].getLineNumber()
+					+ "] " + "name == null");
+			////////////////////////////debug
+			
+			return;
+			
+		}//if (name == null)
 		
 //		// Log
 //		Log.d("${file}" + "["
@@ -72,6 +85,13 @@ public class BtnActionListener  implements ActionListener {
 	}
 
 	private void actionPerformed_cal() {
+		
+		//debug =========================
+		System.out.println("["
+				+ (new Throwable()).getStackTrace()[0].getFileName() + ":"
+				+ (new Throwable()).getStackTrace()[0].getLineNumber() + "] ");
+		
+		////////////////////////////debug
 		
 	}//private void actionPerformed_cal(ActionEvent e)
 
