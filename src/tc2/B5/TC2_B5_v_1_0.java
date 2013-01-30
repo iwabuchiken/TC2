@@ -4,14 +4,19 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.Arrays;
+import java.util.Iterator;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 //import org.dyno.visual.swing.layouts.Constraints;
 //import org.dyno.visual.swing.layouts.GroupLayout;
@@ -19,15 +24,32 @@ import javax.swing.JScrollPane;
 
 public class TC2_B5_v_1_0 extends JFrame {
 
+	/*********************************
+	 * Menu
+	 *********************************/
 	private JMenuItem miExit;
 	private JMenu menuFile;
 	private JMenuBar menuBar;
+	
+	/*********************************
+	 * Panels
+	 *********************************/
 	private JPanel panelButtons;
 	private JScrollPane spTimes;
+	
+	/*********************************
+	 * Button
+	 *********************************/
 	private JButton btnGetTime;
 	private JButton btnCalculate;
 	private JButton btnClear;
 	private JButton btnExit;
+	
+	/*********************************
+	 * List
+	 *********************************/
+	private JList<String> list;
+    private DefaultListModel<String> model;
 
 	/*********************************
 	 * Positions: Buttons
@@ -98,8 +120,47 @@ public class TC2_B5_v_1_0 extends JFrame {
 		
 		add(getSpTimes(), BorderLayout.EAST);
 		add(getPanelButtons(), BorderLayout.WEST);
+		
+		init_2_setList2ScrollBar();
+		
 		setJMenuBar(getMainMenuBar());
 		setSize(612, 340);
+	}
+
+	private void init_2_setList2ScrollBar() {
+		
+		
+		model = new DefaultListModel();
+        list = new JList(model);
+//        list.setBounds(200, 30, 220, 150);
+        
+        list.setFont(new Font("Century", Font.BOLD, 18));
+        
+        String[] values = new String[]{
+        		"Asserts",
+        		"that a condition ",
+        		"is true. ",
+        		"If it isn't ",
+        		"it throws ",
+        		"an AssertionFailedError."
+        };
+        
+        Iterator it = Arrays.asList(values).iterator();
+        
+        while (it.hasNext()) {
+        	
+        	model.addElement((String)it.next());
+        }
+        
+
+		if (spTimes == null) {
+			spTimes = new JScrollPane (list,
+                    ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+                    ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		}
+
+//        spTimes.add(list);
+        
 	}
 
 	private void init_1_setListeners2Buttons() {
