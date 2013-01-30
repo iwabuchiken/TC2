@@ -118,8 +118,10 @@ public class TC2_B5_v_1_0 extends JFrame {
 		
 		init_1_setListeners2Buttons();
 		
-		add(getSpTimes(), BorderLayout.EAST);
-		add(getPanelButtons(), BorderLayout.WEST);
+//		add(getSpTimes(), BorderLayout.EAST);
+//		add(getPanelButtons(), BorderLayout.WEST);
+		add(getPanelButtons());
+		add(getSpTimes());
 		
 		init_2_setList2ScrollBar();
 		
