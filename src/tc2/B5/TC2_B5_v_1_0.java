@@ -240,7 +240,8 @@ public class TC2_B5_v_1_0 extends JFrame {
 		return btnCalculate;
 	}
 
-	private JButton getBtnGetTime() {
+//	private JButton getBtnGetTime() {
+	public JButton getBtnGetTime() {
 		if (btnGetTime == null) {
 			
 			init_1_setListeners2Buttons();
