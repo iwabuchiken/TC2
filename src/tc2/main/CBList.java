@@ -12,8 +12,7 @@ public class CBList extends JList
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+				
 	}
 
 }
