@@ -1,4 +1,4 @@
-package tc2.B5.v1_2.main;
+package tc2.B5;
 
 public class CONS {
 
